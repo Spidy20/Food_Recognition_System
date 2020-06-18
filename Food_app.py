@@ -18,9 +18,7 @@ def upload():
     if request.method == 'POST':
         # Get the file from post request
         f = request.files['file']
-        basepath = os.path.dirname(__file__)
-        file_path = os.path.join(
-            basepath, 'uploads', secure_filename(f.filename))
+        file_path = secure_filename(f.filename)
         f.save(file_path)
         # Make prediction
         result = load_image(file_path)
@@ -28,6 +26,7 @@ def upload():
         d = {"Ice Cream":"🍨",'Fried Rice':"🍚","Pizza":"🍕","Sandwich":"🥪","Samosa":"🌭"}
         result = result+d[result]
         print(result)
+        os.remove(file_path)
         return result
     return None
 
