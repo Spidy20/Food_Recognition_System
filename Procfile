@@ -1,0 +1,1 @@
+web: gunicorn Food_app:app

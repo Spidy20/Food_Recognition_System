@@ -1,0 +1,5 @@
+numpy
+tensorflow==1.14.0
+flask
+Werkzeug
+gunicorn
